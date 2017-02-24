@@ -97,14 +97,16 @@ class CandidatosController extends Controller
 							->where('id_candidato', $idcandidato)
 							->get();
 
+		echo ($result);
+
 		if(count($result))
 		{
 			echo "falso";
-			echo ($result->id_candidato);
+			echo ($result);
 			return false;
 		} else {
 			echo "verdadeiro";
-			echo ($result->id_candidato);
+			echo ($result);
 			return true;
 		}
 	}
