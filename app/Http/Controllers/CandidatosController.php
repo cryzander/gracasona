@@ -56,7 +56,7 @@ class CandidatosController extends Controller
 		]);
 
 		if ($res){
-			return ["mensagem" => $this->candidatoSendoVotado();
+			return ["mensagem" => $this->candidatoSendoVotado()];
 		} else {
 			return ["mensagem" => "Escolha não realizada."];
 		}
