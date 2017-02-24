@@ -35,6 +35,16 @@ class CandidatosController extends Controller
 
 	}
 
+	public function deletar($id){
+		$insert = $this->candidato->find($id)->delete();
+
+		if ($insert){
+			return ["mensagem" => "Deletado com sucesso!"];
+		} else {
+			return ["mensagem" => "Erro ao deletar. Talvez ele já tenha sido deletado."];
+		}
+	}
+
 	public function getAllCandidatos()
 	{
 	
