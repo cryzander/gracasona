@@ -99,15 +99,15 @@ class CandidatosController extends Controller
 
 		echo ($result);
 
-		if(count($result))
+		if(count($result) >= 1)
 		{
-			echo "falso";
-			echo ($result);
-			return false;
-		} else {
 			echo "verdadeiro";
 			echo ($result);
 			return true;
+		} else {
+			echo "falso";
+			echo ($result);
+			return false;
 		}
 	}
 
