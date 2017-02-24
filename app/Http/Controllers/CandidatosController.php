@@ -73,6 +73,7 @@ class CandidatosController extends Controller
 		$res;
 		
 		if (!$this->votouMaisdeUmaVez($idusuario, $this->candidatoIDSendoVotado())){
+			echo "votou.";
 			$res = $this->voto->create([
 				"id_candidato" => $this->candidatoIDSendoVotado(),
 				"sessao" => 1,
@@ -95,11 +96,12 @@ class CandidatosController extends Controller
 							->get();
 		if(count($result))
 		{
-			echo "Retornou "+count($result)+" e deu falso na votação repetida";
+			echo "Falso. Votar.";
+			return false;
 		} else {
-			echo "Retornou "+count($result)+" e deu verdadeiro na votação repetida";
+			echo "Verdadeiro. Não votar.";
+			return true;
 		}
-		return false;
 	}
 
 	
