@@ -25,3 +25,5 @@ Route::get('/escolhervotar/{id}', 'CandidatosController@escolherVotar');
 
 Route::get('/votar/{idusuario}/{estrelas}', 'CandidatosController@votar');
 
+Route::get('/getcandidatosendovotado', 'CandidatosController@candidatoSendoVotado');
+

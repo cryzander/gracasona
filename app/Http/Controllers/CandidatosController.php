@@ -12,7 +12,7 @@ class CandidatosController extends Controller
     //
 	private $candidato;
 	private $voto;
-	private $idSendoVotado;
+	///private $idSendoVotado;
 	
 	public function __construct(Candidato $candidato, Voto $voto, SendoVotado $sendovotado)
 	{
@@ -49,22 +49,22 @@ class CandidatosController extends Controller
 	}
 
 	public function escolherVotar($id){
-		if ($id != 0){
-			$this->idSendoVotado = $id;
-			return ["mensagem" => $id+$this->idSendoVotado];
-		} else {
-			$this->idSendoVotado = $id;
-			return ["mensagem" => "Parando a votação"];
-		}
+		$this->sendovotado->create([
+			"id_candidato" => $id
+		]);
+	}
+
+	public function candidatoSendoVotado(){
+		return $this->sendovotado->all()->last()->pluck('id_candidato');
 	}
 
 	public function votar($idusuario, $estrelas){
 		
 		$res;
 		
-		if (!$this->votouMaisdeUmaVez($idusuario, $this->idSendoVotado)){
+		if (!$this->votouMaisdeUmaVez($idusuario, $this->candidatoSendoVotado)){
 			$res = $this->voto->create([
-				"id_candidato" => $this->idSendoVotado,
+				"id_candidato" => $this->candidatoSendoVotado,
 				"sessao" => 1,
 				"estrelas" => $estrelas,
 				"id_usuario" => $idusuario
@@ -72,7 +72,7 @@ class CandidatosController extends Controller
 		}
 
 		if ($res){
-			return ["mensagem" => $this->idSendoVotado];
+			return ["mensagem" => $this->candidatoSendoVotado];
 		} else {
 			return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
 		}
@@ -83,9 +83,7 @@ class CandidatosController extends Controller
 		return false;
 	}
 
-	public function candidatoSendoVotado(){
-		return $this->sendovotado->all()->last()->pluck('id_candidato');
-	}
+	
 
 	public function getAllCandidatos()
 	{
