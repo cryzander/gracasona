@@ -52,6 +52,7 @@ class CandidatosController extends Controller
 			$this->idSendoVotado = $id;
 			return ["mensagem" => "Votação alterada"];
 		} else {
+			$this->idSendoVotado = $id;
 			return ["mensagem" => "Parando a votação"];
 		}
 	}
@@ -70,7 +71,7 @@ class CandidatosController extends Controller
 		}
 
 		if ($res){
-			return ["mensagem" => "Voto realizado com sucesso." + $this->idSendoVotado];
+			return ["mensagem" => $this->idSendoVotado];
 		} else {
 			return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
 		}
