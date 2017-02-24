@@ -21,3 +21,7 @@ Route::get('/inserir/{nome}', 'CandidatosController@inserir');
 
 Route::get('/deletar/{id}', 'CandidatosController@deletar');
 
+Route::get('/escolhervotar/{id}', 'CandidatosController@escolherVotar');
+
+Route::get('/votar/{idusuario}/{estrelas}', 'CandidatosController@votar');
+

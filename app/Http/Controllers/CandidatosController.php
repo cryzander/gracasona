@@ -11,6 +11,7 @@ class CandidatosController extends Controller
     //
 	private $candidato;
 	private $voto;
+	private $idSendoVotado = 0;
 	
 	public function __construct(Candidato $candidato, Voto $voto)
 	{
@@ -45,14 +46,51 @@ class CandidatosController extends Controller
 		}
 	}
 
+	public function escolherVotar($id){
+		if ($id != 0){
+			$this->idSendoVotado = $id;
+		} else {
+			return ["mensagem" => "Parando a votação"];
+		}
+	}
+
+	public function votar($idusuario, $estrelas){
+		
+		$res;
+		
+		if (!$this->votouMaisdeUmaVez($idusuario, $this->idSendoVotado)){
+			$res = $this->voto->create([
+				"id_candidato" => $this->idSendoVotado,
+				"sessao" => 1,
+				"estrelas" => $estrelas,
+				"id_usuario" => $idusuario
+			]);
+		}
+
+		if ($res){
+			return ["mensagem" => "Voto realizado com sucesso."];
+		} else {
+			return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
+		}
+	}
+
+
+	public function votouMaisdeUmaVez($idusuario, $idcandidato ){
+		return false;
+	}
+
+	public function candidatoSendoVotado(){
+		return ["mensagem" => $this->idSendoVotado];
+	}
+
 	public function getAllCandidatos()
 	{
 	
 		$candidatosResult = array 
         	    (
-                	array ( 'id' => 4,
-                        	'nome' => 'teste',
-	                        'estrelas' => 1)        
+                	array ( 'id' => 0,
+                        	'nome' => 'Ninguém',
+	                        'estrelas' => 0)        
         	    );
 
 	
