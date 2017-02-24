@@ -14,9 +14,10 @@ class CreateSendovotadoTable extends Migration
     public function up()
     {
         Schema::create('sendovotados', function(Blueprint $table){
-		$table->increments('id');
-		$table->integer('id_candidato');
-		$table->integer('sessao')->nullable();
+            $table->increments('id');
+            $table->integer('id_candidato');
+            $table->integer('sessao')->nullable();
+        });
     }
 
     /**

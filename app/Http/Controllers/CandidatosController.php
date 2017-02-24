@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Candidato;
 use App\Models\Voto;
+use App\Models\SendoVotado;
 
 class CandidatosController extends Controller
 {
@@ -13,12 +14,10 @@ class CandidatosController extends Controller
 	private $voto;
 	private $idSendoVotado;
 	
-	public function __construct(Candidato $candidato, Voto $voto)
+	public function __construct(Candidato $candidato, Voto $voto, SendoVotado $sendovotado)
 	{
 		$this->candidato = $candidato;
 		$this->voto = $voto;
-		$this->idSendoVotado = 0;
-		echo("Entrei no construtor");
 
 	}
 
@@ -85,7 +84,7 @@ class CandidatosController extends Controller
 	}
 
 	public function candidatoSendoVotado(){
-		return ["mensagem" => $this->idSendoVotado];
+		return $this->sendovotado->all()->last()->pluck('id_candidato');
 	}
 
 	public function getAllCandidatos()

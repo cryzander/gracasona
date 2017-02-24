@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model
 {
     //
-	public rules => [
+	public $rules = [
 		'numerousuario' => 'required|numeric'
 	];
+
+	protected $fillable = ['numerousuario'];
 }
