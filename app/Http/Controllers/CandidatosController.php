@@ -18,6 +18,8 @@ class CandidatosController extends Controller
 		$this->candidato = $candidato;
 		$this->voto = $voto;
 		$this->idSendoVotado = 0;
+		echo("Entrei no construtor");
+
 	}
 
 	public function inserir($nome){
