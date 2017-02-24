@@ -93,11 +93,11 @@ class CandidatosController extends Controller
 		$result = $this->voto->where('id_usuario',$idusuario)
 							->where('id_candidato', $idcandidato)
 							->get();
-		if($result)
+		if(count($result))
 		{
-			echo "Teve resultado."+$result[0]->id_candidato;
+			echo "Retornou "+count($result)+" e deu falso na votação repetida";
 		} else {
-			echo "Não teve resultado.";
+			echo "Retornou "+count($result)+" e deu verdadeiro na votação repetida";
 		}
 		return false;
 	}
