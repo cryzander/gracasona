@@ -11,12 +11,13 @@ class CandidatosController extends Controller
     //
 	private $candidato;
 	private $voto;
-	private $idSendoVotado = 0;
+	private $idSendoVotado;
 	
 	public function __construct(Candidato $candidato, Voto $voto)
 	{
 		$this->candidato = $candidato;
 		$this->voto = $voto;
+		$this->idSendoVotado = 0;
 	}
 
 	public function inserir($nome){
@@ -69,7 +70,7 @@ class CandidatosController extends Controller
 		}
 
 		if ($res){
-			return ["mensagem" => "Voto realizado com sucesso."];
+			return ["mensagem" => "Voto realizado com sucesso." + $this->idSendoVotado];
 		} else {
 			return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
 		}
