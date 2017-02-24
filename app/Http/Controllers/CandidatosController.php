@@ -63,7 +63,7 @@ class CandidatosController extends Controller
 	}
 
 	public function candidatoSendoVotado(){
-		return $this->sendovotado->all()->last()->pluck('id_candidato');
+		return $this->sendovotado->all()->last()->id_candidato;
 	}
 
 	public function votar($idusuario, $estrelas){
