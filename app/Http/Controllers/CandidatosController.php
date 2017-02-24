@@ -56,7 +56,7 @@ class CandidatosController extends Controller
 		]);
 
 		if ($res){
-			return ["mensagem" => $this->candidatoSendoVotado];
+			return ["mensagem" => $this->candidatoSendoVotado();
 		} else {
 			return ["mensagem" => "Escolha não realizada."];
 		}
@@ -70,9 +70,9 @@ class CandidatosController extends Controller
 		
 		$res;
 		
-		if (!$this->votouMaisdeUmaVez($idusuario, $this->candidatoSendoVotado)){
+		if (!$this->votouMaisdeUmaVez($idusuario, $this->candidatoSendoVotado())){
 			$res = $this->voto->create([
-				"id_candidato" => $this->candidatoSendoVotado,
+				"id_candidato" => $this->candidatoSendoVotado(),
 				"sessao" => 1,
 				"estrelas" => $estrelas,
 				"id_usuario" => $idusuario
@@ -80,7 +80,7 @@ class CandidatosController extends Controller
 		}
 
 		if ($res){
-			return ["mensagem" => $this->candidatoSendoVotado];
+			return ["mensagem" => $this->candidatoSendoVotado()];
 		} else {
 			return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
 		}
