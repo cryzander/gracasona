@@ -69,8 +69,14 @@ class CandidatosController extends Controller
 	}
 
 	public function zerarEstrelas($id) {
-		$this->voto->where('id_candidato', $id)
+		$resultZerar = $this->voto->where('id_candidato', $id)
 					->delete();
+
+		if($resultZerar){
+			return ["mensagem" => "Zerado."];
+		} else {
+			return ["mensagem" => "Erro."];
+		}
 	}
 
 	public function votar($idusuario, $estrelas){
@@ -78,7 +84,7 @@ class CandidatosController extends Controller
 		$res;
 		
 		if (!$this->votouMaisdeUmaVez($idusuario, $this->candidatoIDSendoVotado())){
-			echo "votou.";
+			//echo "votou.";
 			$res = $this->voto->create([
 				"id_candidato" => $this->candidatoIDSendoVotado(),
 				"sessao" => 1,
@@ -91,6 +97,8 @@ class CandidatosController extends Controller
 			} else {
 				return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
 			}
+		} else {
+			return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
 		}
 
 		
@@ -102,15 +110,15 @@ class CandidatosController extends Controller
 							->where('id_candidato', $idcandidato)
 							->get();
 
-		echo ($result);
+		//echo ($result);
 
 		if(count($result) >= 1)
 		{
-			echo "verdadeiro";
+			//echo "verdadeiro";
 			//echo ($result);
 			return true;
 		} else {
-			echo "falso";
+			//echo "falso";
 			//echo ($result);
 			return false;
 		}
