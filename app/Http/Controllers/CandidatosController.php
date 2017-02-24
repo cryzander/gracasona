@@ -51,9 +51,15 @@ class CandidatosController extends Controller
 	}
 
 	public function escolherVotar($id){
-		$this->sendovotado->create([
+		$res = $this->sendovotado->create([
 			"id_candidato" => $id
 		]);
+
+		if ($res){
+			return ["mensagem" => $this->candidatoSendoVotado];
+		} else {
+			return ["mensagem" => "Escolha não realizada."];
+		}
 	}
 
 	public function candidatoSendoVotado(){
