@@ -17,5 +17,5 @@ Route::get('/', function () {
 
 Route::get('/candidatos', 'CandidatosController@getAllCandidatos');
 
-Route::get('/inserir/{$nome}', 'CandidatosController@inserir');
+Route::get('/inserir/{nome}', 'CandidatosController@inserir');
 
