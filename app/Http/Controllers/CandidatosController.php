@@ -50,7 +50,7 @@ class CandidatosController extends Controller
 	public function escolherVotar($id){
 		if ($id != 0){
 			$this->idSendoVotado = $id;
-			return ["mensagem" => "Votação alterada"];
+			return ["mensagem" => $id+$this->idSendoVotado];
 		} else {
 			$this->idSendoVotado = $id;
 			return ["mensagem" => "Parando a votação"];
