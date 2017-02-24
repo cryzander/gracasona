@@ -80,13 +80,15 @@ class CandidatosController extends Controller
 				"estrelas" => $estrelas,
 				"id_usuario" => $idusuario
 			]);
+
+			if ($res){
+				return ["mensagem" => $this->candidatoIDSendoVotado()];
+			} else {
+				return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
+			}
 		}
 
-		if ($res){
-			return ["mensagem" => $this->candidatoIDSendoVotado()];
-		} else {
-			return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
-		}
+		
 	}
 
 
