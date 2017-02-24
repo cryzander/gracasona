@@ -96,13 +96,15 @@ class CandidatosController extends Controller
 		$result = $this->voto->where('id_usuario',$idusuario)
 							->where('id_candidato', $idcandidato)
 							->get();
-							
+
 		if(count($result))
 		{
-			echo ("Falso. Votar."+count($result));
+			echo "falso";
+			echo ($result->id_candidato);
 			return false;
 		} else {
-			echo ("Verdadeiro. Não votar."+count($result));
+			echo "verdadeiro";
+			echo ($result->id_candidato);
 			return true;
 		}
 	}
