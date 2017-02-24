@@ -12,10 +12,10 @@ class CandidatosController extends Controller
 	private $candidato;
 	private $voto;
 	
-	public function __construct(Candidato $candidat, Voto $voto)
+	public function __construct(Candidato $candidato, Voto $voto)
 	{
 		$this->candidato = $candidato;
-		$this->voto = $voto
+		$this->voto = $voto;
 	}	
 
 	public function getAllCandidatos()
@@ -25,7 +25,7 @@ class CandidatosController extends Controller
         	    (
                 	array ( 'id' => 4,
                         	'nome' => 'teste',
-	                        'stars' => 1)        
+	                        'estrelas' => 1)        
         	    );
 
 	
@@ -35,8 +35,8 @@ class CandidatosController extends Controller
 		foreach ($candidatos as $cand) 
 		{
 			$id_candidato = $cand->id;
-			$estrelas = $this->votos->where('id_candidato', $id_candidato)->sum('estrelas');
-			array_push($candidatosResult, array('id' => $cand->id, 'nome' => $cand->nome, 'estrelas' => $estrelas));
+			$estrelas = $this->voto->where('id_candidato', $id_candidato)->sum('estrelas');
+			array_push($candidatosResult, array('id' => $cand->id, 'nome' => $cand->name, 'estrelas' => $estrelas));
 		}
 
 	

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Voto extends Model
 {
     //
-	public rules = [
+	public $rules = [
 		'id_candidato' => 'required|numeric',
 		'sessao' => 'required|numeric',
 		'estrelas' => 'required|numeric',
