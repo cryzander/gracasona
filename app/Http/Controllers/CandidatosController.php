@@ -56,13 +56,15 @@ class CandidatosController extends Controller
 		]);
 
 		if ($res){
-			return ["mensagem" => $this->candidatoSendoVotado()];
+			return ["mensagem" => $this->candidatoIDSendoVotado()];
 		} else {
 			return ["mensagem" => "Escolha não realizada."];
 		}
 	}
 
-	public function candidatoSendoVotado(){
+
+
+	public function candidatoIDSendoVotado(){
 		return $this->sendovotado->all()->last()->id_candidato;
 	}
 
@@ -70,9 +72,9 @@ class CandidatosController extends Controller
 		
 		$res;
 		
-		if (!$this->votouMaisdeUmaVez($idusuario, $this->candidatoSendoVotado())){
+		if (!$this->votouMaisdeUmaVez($idusuario, $this->candidatoIDSendoVotado())){
 			$res = $this->voto->create([
-				"id_candidato" => $this->candidatoSendoVotado(),
+				"id_candidato" => $this->candidatoIDSendoVotado(),
 				"sessao" => 1,
 				"estrelas" => $estrelas,
 				"id_usuario" => $idusuario
@@ -80,7 +82,7 @@ class CandidatosController extends Controller
 		}
 
 		if ($res){
-			return ["mensagem" => $this->candidatoSendoVotado()];
+			return ["mensagem" => $this->candidatoIDSendoVotado()];
 		} else {
 			return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
 		}
@@ -88,6 +90,9 @@ class CandidatosController extends Controller
 
 
 	public function votouMaisdeUmaVez($idusuario, $idcandidato ){
+		$result = $this->voto->where('id_usuario',$idusuario)
+							->where('id_candidato', $id_candidato);
+		echo $result;
 		return false;
 	}
 
