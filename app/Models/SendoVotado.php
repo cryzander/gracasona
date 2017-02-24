@@ -8,4 +8,5 @@ class SendoVotado extends Model
 {
     protected $fillable = ['id_candidato', 'sessao'];
     public $timestamps = false;
+    protected $table = "sendovotados";
 }
