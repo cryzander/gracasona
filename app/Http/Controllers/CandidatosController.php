@@ -92,7 +92,11 @@ class CandidatosController extends Controller
 	public function votouMaisdeUmaVez($idusuario, $idcandidato ){
 		$result = $this->voto->where('id_usuario',$idusuario)
 							->where('id_candidato', $idcandidato);
-		echo $result;
+		if($result){
+			echo "Teve resultado."
+		} else {
+			echo "Não teve resultado."
+		}
 		return false;
 	}
 
