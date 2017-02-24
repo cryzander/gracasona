@@ -96,10 +96,10 @@ class CandidatosController extends Controller
 							->get();
 		if(count($result))
 		{
-			echo "Falso. Votar.";
+			echo "Falso. Votar."+count($result);
 			return false;
 		} else {
-			echo "Verdadeiro. Não votar.";
+			echo "Verdadeiro. Não votar."+count($result);
 			return true;
 		}
 	}
