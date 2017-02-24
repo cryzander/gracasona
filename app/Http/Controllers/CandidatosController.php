@@ -93,9 +93,9 @@ class CandidatosController extends Controller
 		$result = $this->voto->where('id_usuario',$idusuario)
 							->where('id_candidato', $idcandidato);
 		if($result){
-			echo "Teve resultado."
+			echo "Teve resultado.";
 		} else {
-			echo "Não teve resultado."
+			echo "Não teve resultado.";
 		}
 		return false;
 	}
