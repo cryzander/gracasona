@@ -68,6 +68,11 @@ class CandidatosController extends Controller
 		return $this->sendovotado->all()->last()->id_candidato;
 	}
 
+	public function zerarEstrelas($id) {
+		$this->voto->where('id_candidato', $id)
+					->delete();
+	}
+
 	public function votar($idusuario, $estrelas){
 		
 		$res;
@@ -102,11 +107,11 @@ class CandidatosController extends Controller
 		if(count($result) >= 1)
 		{
 			echo "verdadeiro";
-			echo ($result);
+			//echo ($result);
 			return true;
 		} else {
 			echo "falso";
-			echo ($result);
+			//echo ($result);
 			return false;
 		}
 	}
