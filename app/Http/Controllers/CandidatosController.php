@@ -12,12 +12,14 @@ class CandidatosController extends Controller
     //
 	private $candidato;
 	private $voto;
+	private $sendovotado;
 	///private $idSendoVotado;
 	
 	public function __construct(Candidato $candidato, Voto $voto, SendoVotado $sendovotado)
 	{
 		$this->candidato = $candidato;
 		$this->voto = $voto;
+		$this->sendovotado = $sendovotado;
 
 	}
 
