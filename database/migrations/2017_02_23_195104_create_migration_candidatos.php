@@ -26,6 +26,6 @@ class CreateMigrationCandidatos extends Migration
      */
     public function down()
     {
-        Schema::drop('produtos');
+        Schema::drop('candidatos');
     }
 }
