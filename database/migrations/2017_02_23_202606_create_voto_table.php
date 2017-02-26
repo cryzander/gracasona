@@ -18,7 +18,7 @@ class CreateVotoTable extends Migration
 		$table->integer('id_candidato');
 		$table->integer('sessao');
 		$table->integer('estrelas');
-		$table->integer('id_usuario');
+		$table->string('id_usuario');
 	});
     }
 
