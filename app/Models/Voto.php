@@ -13,6 +13,6 @@ class Voto extends Model
 		'id_candidato' => 'required|numeric',
 		'sessao' => 'required|numeric',
 		'estrelas' => 'required|numeric',
-		'id_usuario' => 'required|numeric'
+		'id_usuario' => 'required'
 	];
 }

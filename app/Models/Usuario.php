@@ -9,8 +9,9 @@ class Usuario extends Model
     //
 	public $timestamps = false;
 	public $rules = [
-		'numerousuario' => 'required|numeric'
+		//'numerousuario' => 'required|numeric',
+		'uuidusuario' => 'required'
 	];
 
-	protected $fillable = ['numerousuario'];
+	protected $fillable = ['uuidusuario'];
 }

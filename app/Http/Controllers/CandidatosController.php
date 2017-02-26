@@ -13,6 +13,7 @@ class CandidatosController extends Controller
 	private $candidato;
 	private $voto;
 	private $sendovotado;
+	private $defaulnumerousuario = 2017;
 	///private $idSendoVotado;
 	
 	public function __construct(Candidato $candidato, Voto $voto, SendoVotado $sendovotado)
