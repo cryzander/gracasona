@@ -94,7 +94,7 @@ class CandidatosController extends Controller
 			]);
 
 			if ($res){
-				return ["mensagem" => $this->candidatoIDSendoVotado()];
+				return ["mensagem" => 1 ];
 			} else {
 				return ["mensagem" => "Voto não realizado. Talvez você esteja tentando votar mais de uma vez na mesma pessoa na mesma sessao."];
 			}
